@@ -45,8 +45,7 @@ func getAllUsers(c echo.Context) error {
 func getUser(c echo.Context) error {
 	id := c.Param("id")
 	user := new(models.User)
-	// models.Db.Debug().First(user, id)
-	models.Db.Debug().Preload("Books").Table("users").Find(&user, "id = ?", id)
+	models.Db.Debug().Preload("Books").Table("users").Find(&user, id)
 	return c.JSON(http.StatusOK, user)
 }
 
