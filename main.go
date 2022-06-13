@@ -9,6 +9,6 @@ func PrintSlice[T any](s []T) {
 func main() {
 	// controllers.StartEchoServer()
 
-	PrintSlice[int]([]int{1, 2, 3})
-	PrintSlice[string]([]string{"a", "b", "c"})
+	PrintSlice([]int{1, 2, 3})
+	PrintSlice([]string{"a", "b", "c"})
 }
