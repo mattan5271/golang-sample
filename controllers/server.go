@@ -38,14 +38,14 @@ func createUser(c echo.Context) error {
 
 func getAllUsers(c echo.Context) error {
 	users := []models.User{}
-	models.Db.Debug().Find(&users)
+	models.Db.Debug().Preload("Books").Table("users").Find(&users)
 	return c.JSON(http.StatusOK, users)
 }
 
 func getUser(c echo.Context) error {
 	id := c.Param("id")
 	user := new(models.User)
-	models.Db.Debug().Preload("Books").Table("users").Find(&user, id)
+	models.Db.Debug().Preload("Books").Table("users").Find(user, id)
 	return c.JSON(http.StatusOK, user)
 }
 
